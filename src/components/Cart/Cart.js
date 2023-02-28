@@ -27,7 +27,7 @@ const Cart = (props) => {
           />
         ))}
       </ul>
-      <h3>TotalPrice: ${cartTotalPrice}</h3>
+      <h3>TotalPrice: ${Math.abs(cartTotalPrice)}</h3>
     </Card>
   );
 };
