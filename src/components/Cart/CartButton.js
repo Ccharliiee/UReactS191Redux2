@@ -9,9 +9,9 @@ const CartButton = (props) => {
   const cartTotalQuantity = useSelector(
     (state) => state.cartReducer.totalQuantity
   );
-  const cartTotalPrice = useSelector((state) =>
-    state.cartReducer.totalPrice.toFixed(2)
-  );
+  const cartTotalPrice = parseFloat(
+    useSelector((state) => state.cartReducer.totalPrice)
+  ).toFixed(2);
 
   const toggleCartHandler = () => {
     dispatchCartUI(uiActions.toggleCart());

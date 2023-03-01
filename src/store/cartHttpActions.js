@@ -44,7 +44,7 @@ export const sendCartData2API = (cartData, putCartDataRequest, pError) => {
       body: {
         items: cartData.items,
         totalQuantity: cartData.totalQuantity,
-        totalPrice: cartData.totalPrice,
+        totalPrice: cartData.totalPrice.toFixed(2),
       },
       fMsg: "Could not send cart data!",
     });
