@@ -28,7 +28,7 @@ export const fetchCartDataFromAPI = (fetchCartDataRequest, gError) => {
   };
 };
 
-export const sendCartData2API = (cart, putCartDataRequest, pError) => {
+export const sendCartData2API = (cartData, putCartDataRequest, pError) => {
   return (dispatch) => {
     dispatch(
       uiActions.showNotification({
@@ -41,10 +41,11 @@ export const sendCartData2API = (cart, putCartDataRequest, pError) => {
     putCartDataRequest({
       url: process.env.REACT_APP_Cart1API,
       method: "PUT",
-      body: JSON.stringify({
-        items: cart.items,
-        totalQuantity: cart.totalQuantity,
-      }),
+      body: {
+        items: cartData.items,
+        totalQuantity: cartData.totalQuantity,
+        totalPrice: cartData.totalPrice,
+      },
       fMsg: "Could not send cart data!",
     });
 

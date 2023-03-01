@@ -24,7 +24,9 @@ const useHttp = () => {
       }
 
       const data = await response.json();
-      requestConfig?.rpLoader(data);
+      if (requestConfig.rpLoader) {
+        requestConfig.rpLoader(data);
+      }
     } catch (err) {
       setError(`Something went wrong! ${err.message} `);
     }

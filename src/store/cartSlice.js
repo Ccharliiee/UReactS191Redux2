@@ -6,6 +6,7 @@ const cartSlice = createSlice({
     items: [],
     totalQuantity: 0,
     totalPrice: 0,
+    edited: false,
   },
   reducers: {
     reloadCart(state, action) {
@@ -30,6 +31,7 @@ const cartSlice = createSlice({
       }
       state.totalQuantity++;
       state.totalPrice += newItem.price;
+      state.edited = true;
     },
     removeItemFromCart(state, action) {
       const id = action.payload;

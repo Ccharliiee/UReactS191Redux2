@@ -29,7 +29,7 @@ function App() {
 
   const notification = useSelector((state) => state.uiReducer.notification);
   const showCart = useSelector((state) => state.uiReducer.cartIsVisible);
-  const cart = useSelector((state) => state.cart);
+  const cartData = useSelector((state) => state.cartReducer);
 
   const dispatch = useDispatch();
 
@@ -38,12 +38,10 @@ function App() {
   }, [dispatch, fetchCartDataRequest, gError]);
 
   useEffect(() => {
-    if (!cart || cart.totalQuantity === 0) {
-      return;
+    if (cartData.edited) {
+      dispatch(sendCartData2API(cartData, putCartDataRequest, pError));
     }
-
-    dispatch(sendCartData2API({ cart, putCartDataRequest, pError }));
-  }, [cart, dispatch, pError, putCartDataRequest]);
+  }, [cartData, dispatch, putCartDataRequest, pError]);
 
   return (
     <>
