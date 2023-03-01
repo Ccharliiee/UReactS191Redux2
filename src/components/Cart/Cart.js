@@ -6,9 +6,7 @@ import CartItem from "./CartItem";
 
 const Cart = (props) => {
   const cartItems = useSelector((state) => state.cartReducer.items);
-  const cartTotalPrice = useSelector((state) =>
-    state.cartReducer.totalPrice.toFixed(2)
-  );
+  const cartTotalPrice = useSelector((state) => state.cartReducer.totalPrice);
 
   return (
     <Card className={classes.cart}>
@@ -27,7 +25,7 @@ const Cart = (props) => {
           />
         ))}
       </ul>
-      <h3>TotalPrice: ${Math.abs(cartTotalPrice)}</h3>
+      <h3>TotalPrice: ${Math.abs(cartTotalPrice.toFixed(2))}</h3>
     </Card>
   );
 };
